@@ -54,7 +54,7 @@ public class TitleCreateServlet extends HttpServlet {
 	                em.close();
 
 	                request.setAttribute("_token", request.getSession().getId());
-	                request.setAttribute("employee", e);
+	                request.setAttribute("title", e);
 	                request.setAttribute("errors", errors);
 
 	                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/titles/new.jsp");

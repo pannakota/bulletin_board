@@ -16,7 +16,7 @@
                                     （削除済み）
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="${pageContext.request.contextPath}/reply/show?id=${title.id}">
+                                    <a href="${pageContext.request.contextPath}/replys/index?id=${title.id}">
                                         <c:out value="${title.title}"/>
                                     </a>
 
