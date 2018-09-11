@@ -49,12 +49,14 @@ public class ReplysIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        List<Reply> replys = em.createNamedQuery("getAllReports", Reply.class)
+        List<Reply> replys = em.createNamedQuery("getAllReports" , Reply.class)
+                                  .setParameter(1, Integer.parseInt(request.getParameter("id")))
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
 
         long replys_count = (long)em.createNamedQuery("getReportsCount", Long.class)
+                                     .setParameter(1, Integer.parseInt(request.getParameter("id")))
                                      .getSingleResult();
 
         em.close();

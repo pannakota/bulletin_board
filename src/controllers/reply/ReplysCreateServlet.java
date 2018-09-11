@@ -42,7 +42,7 @@ public class ReplysCreateServlet extends HttpServlet {
               Reply e = new Reply();
 
               e.setTitle_id(Integer.parseInt(request.getParameter("title_id")));
-              e.setReply(request.getParameter("reply"));
+              e.setReply(request.getParameter("content"));
               Timestamp currentTime = new Timestamp(System.currentTimeMillis());
               e.setCreated_at(currentTime);
 
@@ -65,7 +65,10 @@ public class ReplysCreateServlet extends HttpServlet {
                   em.close();
                   request.getSession().setAttribute("flush", "返信を送りました");
 
-                  response.sendRedirect(request.getContextPath() + "/replys/index");
+
+                  request.getSession().setAttribute("sid", request.getParameter("title_id"));
+
+                  response.sendRedirect(request.getContextPath() +"/replys/redirect");
               }
         }
 	}

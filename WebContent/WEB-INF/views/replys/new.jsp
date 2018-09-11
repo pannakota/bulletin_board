@@ -19,7 +19,7 @@
 <textarea name="content" cols="170" rows="14" ><c:out value="${reply.reply}"></c:out></textarea>
 <br /><br />
 
-<input type="hidden" name="_token" value="${title_id}" />
+<input type="hidden" name="title_id" value="${title_id}" />
 <input type="hidden" name="_token" value="${_token}" />
 <button type="submit">投稿</button>
         </form>
