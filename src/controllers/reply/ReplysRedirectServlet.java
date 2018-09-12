@@ -44,7 +44,7 @@ public class ReplysRedirectServlet extends HttpServlet {
 
           Title ee = (Title) em.find(Title.class, Integer.parseInt((String)request.getSession().getAttribute("sid")));
 
-            request.getSession().removeAttribute("sid");
+
 
 
 
@@ -60,14 +60,15 @@ public class ReplysRedirectServlet extends HttpServlet {
                 page = 1;
             }
             List<Reply> replys = em.createNamedQuery("getAllReports", Reply.class)
-                                      .setParameter(1, Integer.parseInt(request.getParameter("id")))
+                                      .setParameter(1, Integer.parseInt(request.getParameter("ee.id")))
                                       .setFirstResult(15 * (page - 1))
                                       .setMaxResults(15)
                                       .getResultList();
 
             long replys_count = (long)em.createNamedQuery("getReportsCount", Long.class)
-                                         .setParameter(1, Integer.parseInt(request.getParameter("id")))
+                                         .setParameter(1, Integer.parseInt(request.getParameter("ee.id")))
                                          .getSingleResult();
+            request.getSession().removeAttribute("sid");
 
             em.close();
 
