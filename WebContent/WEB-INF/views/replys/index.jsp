@@ -12,7 +12,8 @@
         <p>作成日時：<fmt:formatDate value="${title.created_at}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 
         <c:forEach var="reply" items="${replys}" varStatus="status">
-                   返信  <c:out value="${reply.reply}" />
+                <br>   返信  <c:out value="${reply.reply}" />
+                <br>
          </c:forEach>
 
          <div id="pagination">
@@ -23,7 +24,7 @@
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                         <a href="<c:url value='/replys/index?page=${i}?id=${title.id}' />"><c:out value="${i}" /></a>&nbsp;
+                         <a href="<c:url value='/replys/index?page=${i}&id=${title.id}' />"><c:out value="${i}" /></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

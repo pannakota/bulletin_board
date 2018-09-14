@@ -60,13 +60,13 @@ public class ReplysRedirectServlet extends HttpServlet {
                 page = 1;
             }
             List<Reply> replys = em.createNamedQuery("getAllReports", Reply.class)
-                                      .setParameter(1, Integer.parseInt(request.getParameter("ee.id")))
+                                      .setParameter(1,ee.getId())
                                       .setFirstResult(15 * (page - 1))
                                       .setMaxResults(15)
                                       .getResultList();
 
             long replys_count = (long)em.createNamedQuery("getReportsCount", Long.class)
-                                         .setParameter(1, Integer.parseInt(request.getParameter("ee.id")))
+                                         .setParameter(1, ee.getId())
                                          .getSingleResult();
             request.getSession().removeAttribute("sid");
 
